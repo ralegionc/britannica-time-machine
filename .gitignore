@@ -1,0 +1,7 @@
+# Everything under data/ is fetched or derived, and every stage re-creates it:
+# NLS volume texts, the dump extracts, the sqlite stores, the segmented entries.
+data/
+
+__pycache__/
+*.pyc
+.pytest_cache/

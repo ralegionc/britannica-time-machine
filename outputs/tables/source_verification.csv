@@ -1,0 +1,8 @@
+check,ok,detail
+nls_dataset_page,True,HTTP 200
+nls_text_zip,True,"HTTP 200, 353 MB"
+nls_zip_range_requests,True,"HTTP 206, 1024 bytes returned"
+eb1911_article_count,True,"37,420 pages under the prefix"
+eb1911_template_fields,True,"315 chars of wikitext, volume and wikipedia params present"
+eb1911_page_transclusion,True,"article body is transcluded from the Page: namespace, so prop=text is required to read it"
+wikipedia_extracts,True,"54,433 chars for Cholera"

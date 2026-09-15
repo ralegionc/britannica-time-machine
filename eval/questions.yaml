@@ -1,0 +1,71 @@
+# Seed question set for era-locked answering.
+#
+# `kind` drives what a good answer looks like:
+#   replaced  - the 1771 answer is now known to be wrong (the interesting case)
+#   refined   - the answer survived but got more precise
+#   expanded  - the entry barely existed early and grew
+#   absent    - no era before some cutoff can answer at all (abstention test)
+#
+# `headwords` lists the entry titles to retrieve under, per era, where the
+# headword changed. Empty means the question title is the headword.
+
+questions:
+  - id: cholera
+    ask: What causes cholera and how should it be treated?
+    kind: replaced
+    headwords: [Cholera, "Cholera Morbus"]
+    expect_shift: miasma and bile imbalance -> contagion -> Vibrio cholerae
+
+  - id: heat
+    ask: What is heat?
+    kind: replaced
+    headwords: [Heat, Caloric, Fire]
+    expect_shift: caloric fluid -> molecular motion -> kinetic theory
+
+  - id: continents
+    ask: Why are the continents shaped the way they are?
+    kind: replaced
+    headwords: [Geology, Earth, Continent]
+    expect_shift: catastrophism and the Deluge -> uniformitarianism -> plate tectonics
+
+  - id: species
+    ask: Where do new species come from?
+    kind: replaced
+    headwords: [Species, Animal, Evolution]
+    expect_shift: fixed creation -> transmutation debated -> natural selection
+
+  - id: light
+    ask: What is light made of?
+    kind: refined
+    headwords: [Light, Optics]
+    expect_shift: corpuscles -> wave and ether -> electromagnetic, then photons
+
+  - id: atom
+    ask: What is an atom?
+    kind: refined
+    headwords: [Atom, Chemistry, Matter]
+    expect_shift: indivisible particle -> Dalton weights -> nucleus and electrons
+
+  - id: electricity
+    ask: What is electricity and what is it good for?
+    kind: expanded
+    headwords: [Electricity]
+    expect_shift: a curiosity of friction -> fluid theory -> industry and field theory
+
+  - id: africa_interior
+    ask: What lies in the interior of Africa?
+    kind: expanded
+    headwords: [Africa, Ethiopia, Nigritia]
+    expect_shift: blank and hearsay -> partial survey -> mapped and partitioned
+
+  - id: dna
+    ask: What carries hereditary information between generations?
+    kind: absent
+    headwords: [Generation, Heredity, Inheritance]
+    expect_shift: no pre-1911 era can answer; abstention is the correct behaviour
+
+  - id: radioactivity
+    ask: What is radioactivity?
+    kind: absent
+    headwords: [Radioactivity, Radium]
+    expect_shift: unanswerable before 1911, answerable at 1911 and after

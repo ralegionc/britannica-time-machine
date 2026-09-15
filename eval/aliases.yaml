@@ -1,0 +1,46 @@
+# Subjects that changed name between editions.
+#
+# This file is evidence, not configuration. Every entry here is a renaming the
+# project had to discover in order to follow a subject across the era axis, and
+# the list belongs in the write-up as a result in its own right.
+#
+# `canonical` is the modern label. `variants` are headwords as printed, in any
+# edition, including OCR-stable spelling drift.
+
+aliases:
+  - canonical: Chemistry
+    variants: [CHEMISTRY, CHYMISTRY, CHEMISTRY AND PHARMACY]
+  - canonical: Tuberculosis
+    variants: [CONSUMPTION, PHTHISIS, SCROFULA]
+  - canonical: Malaria
+    variants: [AGUE, MARSH FEVER, INTERMITTENT FEVER]
+  - canonical: Typhus
+    variants: [GAOL FEVER, JAIL FEVER, PUTRID FEVER]
+  - canonical: Oxygen
+    variants: [OXYGEN, DEPHLOGISTICATED AIR, VITAL AIR]
+  - canonical: Hydrogen
+    variants: [HYDROGEN, INFLAMMABLE AIR]
+  - canonical: Carbon dioxide
+    variants: [FIXED AIR, CARBONIC ACID GAS]
+  - canonical: Heat
+    variants: [HEAT, CALORIC, FIRE]
+  - canonical: West Africa
+    variants: [NIGRITIA, GUINEA, SOUDAN, SUDAN]
+  - canonical: Ethiopia
+    variants: [ABYSSINIA, ETHIOPIA]
+  - canonical: Thailand
+    variants: [SIAM]
+  - canonical: Sri Lanka
+    variants: [CEYLON, TAPROBANE]
+  - canonical: Iran
+    variants: [PERSIA]
+  - canonical: Istanbul
+    variants: [CONSTANTINOPLE, BYZANTIUM]
+  - canonical: Geology
+    variants: [GEOLOGY, COSMOGONY, MINERALOGY]
+  - canonical: Psychiatry
+    variants: [MADNESS, INSANITY, LUNACY, MENTAL DISEASES]
+  - canonical: Anaesthesia
+    variants: [ANAESTHESIA, ETHERIZATION]
+  - canonical: Electricity
+    variants: [ELECTRICITY, GALVANISM, VOLTAIC ELECTRICITY]
