@@ -56,13 +56,14 @@ def dehyphenate(text: str, lexicon: Counter | set | None = None) -> str:
     return re.sub(r"([A-Za-z]+)\x01([A-Za-z]+)", _resolve, marked).replace("\x01", "")
 
 
-def _candidates(token: str) -> list[str]:
+def _candidates(token: str, charset: str = SUSPECT) -> list[str]:
     """Every way of reading suspect characters in `token` as a long s.
 
     A word-final `f` is never a long s (the long form was not used at the end of
     a word), which is what keeps *of*, *if* and *himself* intact.
     """
-    positions = [i for i, ch in enumerate(token[:-1]) if ch in SUSPECT or ch in SUSPECT.upper()]
+    positions = [i for i, ch in enumerate(token[:-1])
+                 if ch in charset or ch in charset.upper()]
     if not positions or len(positions) > MAX_SUSPECT_POSITIONS:
         return []
     out = []
@@ -95,6 +96,32 @@ def restore_token(token: str, lexicon) -> str:
 
 def restore_long_s(text: str, lexicon) -> str:
     return _WORD.sub(lambda m: restore_token(m.group(0), lexicon), text)
+
+
+def is_long_s_suspect(token: str, lexicon, ratio: float = 5.0) -> bool:
+    """Whether a token is plausibly a long-s misreading of a commoner word.
+
+    Different question from `restore_token`, which asks what a token should become
+    and declines to touch anything the lexicon already knows. This asks whether a
+    token that *is* a word is nonetheless inflated by misreadings of another one,
+    which is what happens to *fame* (same), *fide* (side), *feen* (seen) and
+    *muft* (must) in the volumes printed before 1823.
+
+    Needed because any count of words that fell out of use between the early and
+    late editions is otherwise dominated by these: they collapse at exactly the
+    point the long s does, which looks like a vocabulary change and is a
+    typographic one.
+    """
+    low = token.lower()
+    own = lexicon.get(low, 0) if hasattr(lexicon, "get") else int(low in lexicon)
+    # A wider net than restoration uses: *ihould* for should and *fait* for said
+    # are scanner readings too, but letting restoration rewrite every medial i
+    # and t would do far more harm than the long s ever did.
+    for cand in _candidates(low, charset="flit"):
+        other = lexicon.get(cand, 0) if hasattr(lexicon, "get") else int(cand in lexicon)
+        if other and other >= max(own, 1) * ratio:
+            return True
+    return False
 
 
 def reflow(text: str) -> str:

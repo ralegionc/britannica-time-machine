@@ -19,8 +19,8 @@ boundaries in them at all.
 
 ## Status
 
-Corpus construction, entry linking and the era-locked indexes are built and have
-been run: `s01` to `s07`. All three layers are complete on disk:
+The whole pipeline is built and has been run, `s01` to `s10`. All three layers
+are complete on disk:
 
 | Layer | Contents |
 |---|---|
@@ -29,10 +29,12 @@ been run: `s01` to `s07`. All three layers are complete on disk:
 | modern | 36,227 Wikipedia articles, 552 MB, 416 of them with no article |
 | linked | 67,219 subjects, 13 of which have an entry in all twelve eras |
 | indexed | 2,385,809 chunks in 22 era-locked FTS5 tables |
+| answered | 120 question-era pairs, twice: once extractively, once with a local model |
 
-Answering, diffing and rendering are specified in
-[notes/DESIGN.md](notes/DESIGN.md) and not yet built, as is the dense arm of the
-retrieval ablation.
+What is not built is the dense arm of the retrieval ablation, and the
+faithfulness audit, both noted in [notes/DESIGN.md](notes/DESIGN.md).
+The figures are in `outputs/figures/` and the full transcript, every answer with
+its citations, is `outputs/report.html`.
 
 Every number below was produced by the code in `src/`.
 
@@ -227,6 +229,69 @@ title-page and preface end of the book where scanner noise and handwritten
 flyleaf marginalia live: striding across the volume instead, and weighting by
 token rather than averaging per-entry rates, moved the same measurement from
 24.0% to 13.2% before a line of the OCR code changed.
+
+## Asking the question, and catching the answer out
+
+![What each era could be asked, and whether the answer stayed in period](outputs/figures/answer_grid.png)
+
+Ten questions, twelve eras, 120 pairs, answered twice over the same retrieved
+passages. The two generators exist to be compared, not as a fallback for one
+another.
+
+| | Extractive | Local model (Qwen2.5-0.5B-Instruct, CPU) |
+|---|---|---|
+| answered | 106 | 106 |
+| abstained | 14 | 14 |
+| **answers containing out-of-period words** | **0 (0%)** | **47 (44%)** |
+| flagged words per answer | 0.00 | 0.95 |
+
+The extractive generator quotes the best sentences of the retrieved passages with
+an entry id on each, so it cannot be anachronistic: every word it emits was
+printed in that era. That zero is the control. The local model, given exactly the
+same passages and told to use only those, produces the row on the right.
+
+Asked **what causes cholera** as **1771**, with only 1771 passages in front of it,
+the model answered:
+
+> Cholera is caused by bacteria in the intestines. It should be treated with
+> antiseptics like soap and water, antifungal agents, and antibiotics like
+> ampicillin.
+
+*bacteria*, *antifungal*, *antibiotics* and *ampicillin* appear nowhere in the
+1771 volumes, so all four are flagged automatically. The model ignored the
+evidence and answered from what it already knew, which is the failure mode this
+whole design exists to catch, and it is invisible without the check: the prose is
+fluent, confident, and dated 1771.
+
+The detector earned its keep in the other direction too. Its first run flagged
+five extractive answers, which should have been impossible. They were not
+anachronisms: passages had been truncated at a character count, leaving half
+words (*recr*, *viole*, *follo*) that no era's vocabulary contains. The detector
+was right and the quoting was wrong.
+
+## What changed between the answers
+
+![Words that arrive and words that leave](outputs/figures/term_life.png)
+
+**Phlogiston and calx both stop in 1801**, each peaking in 1797. That is the
+chemical revolution arriving in a reference work: Lavoisier's oxygen displaced
+the phlogiston theory through the 1790s, and the encyclopaedia stopped printing
+the words within one edition of each other. *Nitrous* and *vitriolic*, the old
+names in the same vocabulary, fall away on the same schedule. On the other side,
+*electromagnetic* enters at 1842, *cholerae* not until 1911.
+
+Getting there needed one correction worth recording. The first dying-terms table
+returned *fame*, *muft*, *fide*, *cafe*, *feen* and *ihould*, which are not
+abandoned words but long-s readings of *same*, *must*, *side*, *case*, *seen* and
+*should*. They collapse between the fifth edition and the sixth because the long
+s does, so without a filter the table simply rediscovers the typography for a
+third time. Two filters remove them: one that asks whether a token is a
+misreading of a commoner word, and a blunter one that asks whether the proofread
+1911 layer contains it at all. *Phlogiston* occurs 36 times there, *caloric* 23,
+*miasma* 10; *fubjeft*, *difeovered* and *refpeft* occur zero times each. 13,933
+candidates were rejected as scanner damage, 386 kept, and the top of the kept
+list still carries some residue, which is why the figure draws only terms
+attested ten times or more in 1911.
 
 ## The curve this project was built to measure
 
@@ -426,7 +491,9 @@ python run_all.py              # the whole 1911 edition from the dump, about 15 
 | `s05_segment_entries.py` | cuts volumes into entries, normalises the OCR, reports what it rejected |
 | `s06_link_entries.py` | joins the entry for one subject across all twelve layers |
 | `s07_build_indexes.py` | chunks the corpus, builds one FTS5 index per era, runs the ablation |
-| `s08` to `s10` | era-locked answering, diffing, rendering. See [notes/DESIGN.md](notes/DESIGN.md) |
+| `s08_answer.py` | answers each question per era, abstains, flags out-of-period words |
+| `s09_diff.py` | what changed between the answers: arrivals, departures, turnover |
+| `s10_render.py` | three figures and `outputs/report.html` |
 
 Every stage resumes. `s03` and `s04` are the slow ones and both take `--limit`.
 

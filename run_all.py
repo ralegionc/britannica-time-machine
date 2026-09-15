@@ -13,6 +13,11 @@ checked.
   python run_all.py              # everything, dump route, default editions
   python run_all.py --quick      # API sample instead of the dump, no big download
   python run_all.py --only s02,s05
+
+`s08` defaults to the extractive generator, which needs no model. For the
+comparison that makes the anachronism rate mean something, run it a second time
+with `--generator local`, which pulls a small instruction-tuned model and runs it
+on the CPU (about twenty minutes for 120 question-era pairs).
 """
 import argparse
 import subprocess
@@ -34,6 +39,10 @@ STAGES = [
     ("s06_link_entries.py", "join each subject's entry across the twelve layers", [], []),
     ("s07_build_indexes.py", "chunk, build one FTS5 index per era, run the ablation",
      [], ["--queries-n", "60"]),
+    ("s08_answer.py", "answer each question per era, abstain, flag anachronisms",
+     [], []),
+    ("s09_diff.py", "what changed between the answers", [], []),
+    ("s10_render.py", "figures and the report page", [], []),
 ]
 
 

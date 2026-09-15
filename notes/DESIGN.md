@@ -147,7 +147,7 @@ is hours of work for an arm whose result is largely foreseeable, since embedding
 models have seen very little eighteenth-century orthography and none of this
 scanner's failure modes.
 
-## Answering (s08)
+## Answering (s08, built)
 
 Retrieve top-k within the era, then generate an answer constrained to the
 retrieved spans, with a citation to an entry id on every claim. Below a score
@@ -171,7 +171,17 @@ how much they are worth:
    anyone, and the rate it reports is the number that makes the whole timeline
    trustworthy.
 
-## Diff (s09)
+Built and run. The extractive generator flags 0 of 106 answers, which is the
+control working as designed, and a small local model flags 47 of 106. Two things
+the plan above did not anticipate:
+
+- **The generator choice is a measurement, not a fallback.** Running both over
+  identical passages is what turns "models leak" into a number.
+- **The detector finds bugs in its own pipeline.** It flagged five extractive
+  answers that should have been impossible, and was right: passages had been cut
+  mid-word. Any invariant worth stating is worth testing against.
+
+## Diff (s09, built)
 
 Per question, across eras:
 
@@ -183,7 +193,13 @@ Per question, across eras:
 - terms that die: words present in early eras and absent later (*caloric*,
   *phlogiston*, *miasma*, *animalcule*).
 
-## Render (s10)
+Built and run, with one correction the sketch did not foresee: the first version
+of the dying-terms table measured the long s for a third time, returning *fame*,
+*muft* and *fide* rather than *phlogiston*. Filtering on whether the proofread
+1911 layer attests a word at all is what separates an abandoned word from a
+scanner artefact.
+
+## Render (s10, built)
 
 One figure per question: a horizontal band per era in chronological order, each
 carrying its answer, its citations, and a marker for abstention, with appearing

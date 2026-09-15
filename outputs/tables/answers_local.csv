@@ -1,0 +1,129 @@
+question,kind,era,mode,coverage,n_anachronisms,anachronisms,citations,answer
+cholera,replaced,1771,local,0.667,4,bacteria antifungal antibiotics ampicillin,1771:144133902:729,"Cholera is caused by bacteria in the intestines. It should be treated with antiseptics like soap and water, antifungal agents, and antibiotics like ampicillin."
+cholera,replaced,1784,local,0.667,2,bacteria antibiotics,1784:144850377:1111,Cholera is caused by bacteria and can be treated with antibiotics.
+cholera,replaced,1797,local,0.333,5,cholerae bacteria hydrated electrolyte worsens,1797:149983206:218,"Cholera is caused by Vibrio cholerae bacteria. To treat cholera, it's important to follow these steps:
+
+1. Stay hydrated: Drink plenty of fluids like water, broths, and electrolyte solutions.
+
+2. Rest: Get plenty of rest to help your body fight off the illness.
+
+3. Monitor your condition closely: Keep track of your symptoms and seek medical attention if your condition worsens.
+
+4. Follow the docto"
+cholera,replaced,1801,local,1.0,4,bacteria antibiotics chloramphenicol metronidazole,1801:191253807:166,"Cholera is caused by bacteria. To treat cholera, it should be treated with antibiotics such as chloramphenicol or metronidazole."
+cholera,replaced,1810,local,0.333,7,bacteria diarrhea dehydration rehydration medications healthcare,1810:191678902:386,"Cholera is caused by bacteria that enter the intestines and multiply rapidly, leading to diarrhea and dehydration. Treatment includes rehydration with fluids and medications as prescribed by healthcare professionals."
+cholera,replaced,1817,local,0.333,9,bacteria dehydration electrolyte imbalance supportive rehydration,1817:192984255:40,"Cholera is caused by bacteria that enter the digestive system and multiply rapidly, leading to severe dehydration and electrolyte imbalance. Treatment involves supportive care such as rehydration therapy, antibiotics, and supportive medical interventions like fasting and fluid replacement."
+cholera,replaced,1823,local,0.667,3,bacteria medications antibiotics,1823:192200323:413,"Cholera is caused by bacteria (Cholera Morbus) that can spread rapidly through contaminated food and water. To treat cholera, patients should drink plenty of warm water and avoid alcohol and strong tea. Additionally, doctors may prescribe medications like antibiotics to help fight the infection."
+cholera,replaced,1824,local,1.0,6,bacteria gardnerella marutensis antibiotics chloramphenicol metronidazole,1824:192693396:274,Cholera is caused by bacteria (Gardnerella marutensis) and should be treated with antibiotics such as chloramphenicol or metronidazole.
+cholera,replaced,1842,local,0.333,3,bacteria antibiotics chloramphenicol,1842:193322690:1225,Cholera is caused by bacteria and should be treated with antibiotics such as chloramphenicol.
+cholera,replaced,1860,local,0.333,3,bacteria antibiotics chloramphenicol,1860:193108324:804,Cholera is caused by bacteria and should be treated with antibiotics such as chloramphenicol.
+cholera,replaced,1911,local,1.0,1,supportive,1911:Epilepsy,"Cholera is caused by the bacterium Vibrio cholerae. To treat cholera, it's important to isolate and treat the patient, avoid contamination of food and water, and provide supportive care."
+cholera,replaced,modern,local,0.667,0,,"modern:Sir William Fergusson, 1st Baronet","Cholera is caused by bacteria and should be treated with antibiotics such as ipecac, calomel, opium, and quinine."
+heat,replaced,1771,local,1.0,0,,1771:144850367:3815,"Heat is one of the secondary qualities of bodies, produced by fire, and opposed to cold."
+heat,replaced,1784,local,1.0,0,,1784:144850376:666,"Heat is the expansive force of the elementary fire contained in any body upon the parts of that body, and the expansive force of the fire exerted upon other bodies which touch or come near it."
+heat,replaced,1797,local,1.0,0,,1797:192200061:449,"Heat is defined as the process of energy conversion where a certain amount of energy is converted into another form of energy, such as light, sound, or motion."
+heat,replaced,1801,local,1.0,0,,1801:191253809:120,Heat is a form of energy that is transferred from hotter objects to cooler ones.
+heat,replaced,1810,local,1.0,0,,1810:191320557:63,Heat is a form of energy that can be transferred from one object to another through contact or through a medium such as a gas or liquid.
+heat,replaced,1817,local,1.0,1,calories,1817:192984254:1129,"Heat is defined as the sensation of heat in the body caused by the power of exciting the sensation of heat in us. It is measured in units like ""calories"" or ""jules."" Heat can be produced through various methods, including friction, combustion, and radiation."
+heat,replaced,1823,local,1.0,1,interaction,1823:192692756:1201,"Heat is the sensation of heat excited in the body, caused by the interaction between matter and energy. It can be felt as warmth, burning, or a spark. Heat can be produced by friction, collisions, or combustion processes."
+heat,replaced,1824,local,1.0,0,,1824:192693395:350,"Heat is defined as ""a phenomenon resulting from the movement of particles around their own axes."""
+heat,replaced,1842,local,1.0,0,,1842:193638940:400,"Heat is defined as the energy transferred from one object to another through contact, often resulting in a change in temperature."
+heat,replaced,1860,local,1.0,3,kinetic joules calories,1860:193469393:740,Heat is a form of energy that can be transferred through matter and occurs when molecules gain or lose kinetic energy due to thermal motion. It's measured in units like joules (J) or calories (cal).
+heat,replaced,1911,local,1.0,0,,1911:Heat,"Heat is defined as the caloric theory, where if the specific heat is independent of the temperature, the function \( F' \) must be of the form \( F' = \frac{R}{C(t+T_0)} \), where \( C \) and \( T_0 \) are unknown constants. This leads to the conclusion that the function \( F' \) should remain constant regardless of changes in temperature. However,"
+heat,replaced,modern,local,1.0,0,,modern:Heat,Heat is a form of thermal energy or temperature.
+continents,replaced,1771,local,0.667,1,tectonic,1771:144850367:601,The continents are shaped the way they are due to the movement of tectonic plates caused by the Earth's rotation and revolution.
+continents,replaced,1784,local,0.333,1,tectonic,1784:144850374:734,"The continents are shaped due to the movement of tectonic plates, with older continents being pulled apart and younger ones being pushed together."
+continents,replaced,1797,local,0.667,3,expanses landmasses tectonics,1797:191253822:1363,"The continents are shaped the way they are due to the movement of ice sheets caused by the massive melting of glaciers over millions of years. Ice sheets form when glaciers melt, creating large expanses of ice that can move across continents. This process has led to the formation of many large landmasses, including Antarctica, Greenland, and Iceland. The shape of these continents is also influence"
+continents,replaced,1801,local,0.667,1,tectonic,1801:191253808:102,"The continents are shaped the way they are due to the accumulation of sediment over millions of years, primarily from the movement of tectonic plates."
+continents,replaced,1810,local,0.667,1,populations,1810:193109111:164,"The continents are shaped the way they are due to the narrow strait between the Americas and Africa, which allows for the migration of fish populations over millions of years."
+continents,replaced,1817,local,0.333,1,tectonic,1817:193109108:537,The continents are shaped the way they are due to the movement of tectonic plates caused by the Earth's rotation and revolution.
+continents,replaced,1823,local,0.333,1,humans,1823:192547782:586,"The continents are shaped the way they are because animal food, especially fish, was not used by humans before the deluge, leading to the accumulation of exuvia of marine animals on the earth's surface."
+continents,replaced,1824,local,0.333,1,tectonic,1824:192547786:249,The continents are shaped the way they are due to the movement of tectonic plates caused by the Earth's rotation and revolution.
+continents,replaced,1842,local,0.333,0,,1842:193469091:798,"The continents are shaped the way they are due to the accumulation of sediment over millions of years, resulting in layers of soil and rock."
+continents,replaced,1860,local,0.333,0,,1860:193322698:1531,"The continents are shaped the way they are due to the Earth's rotation on its axis, which creates a bulge at the equator and flattens out the poles over time."
+continents,replaced,1911,local,0.333,0,,1911:Zoological Distribution,The continents are shaped like wedges because the Earth's crust is divided into wedges by tectonic plates moving apart.
+continents,replaced,modern,local,0.333,0,,modern:Continent,"The continents are shaped the way they are because of the process of plate tectonics, which involves the movement of tectonic plates across the Earth's surface. This movement causes the formation of mountains, valleys, and other landforms, shaping the landscape we see today."
+species,replaced,1771,local,1.0,0,,1771:144133902:2740,"New species come from evolution, where bodies of troops change their form and disposition to preserve a poll or defend against enemies better."
+species,replaced,1784,abstain_retrieval,0.0,0,,,NO ANSWER IN THIS EDITION
+species,replaced,1797,abstain_retrieval,0.0,0,,,NO ANSWER IN THIS EDITION
+species,replaced,1801,local,1.0,0,,1801:191253808:8,"New species come from animals that have been deflected under their generic names in the Encyclopædia Britannica but since that article was written, we have met with an account of a new species, fo very Angular, that, if the veracity of our author can be depended on, it is well mtitled to a place here. This species was discovered in the country of the Nimiquas, in the interior of Africa, by M"
+species,replaced,1810,local,1.0,1,ecosystem,1810:191320560:344,New species come from the offspring of parents who were already present in the ecosystem.
+species,replaced,1817,local,1.0,0,,1817:191678898:347,New species come from the reproductive processes of existing species.
+species,replaced,1823,local,1.0,1,environments,1823:192015836:453,New species come from the evolution of the creatures' abilities to survive and reproduce in specific environments.
+species,replaced,1824,abstain_retrieval,0.0,0,,,NO ANSWER IN THIS EDITION
+species,replaced,1842,local,1.0,0,,1842:193469091:887,"New species come from the growth of carrots in different soils, according to Mr. Knight's observations."
+species,replaced,1860,abstain_retrieval,0.0,0,,,NO ANSWER IN THIS EDITION
+species,replaced,1911,local,1.0,0,,1911:Geology,"New species come from the continuous process of evolution, which involves gradual changes over time."
+species,replaced,modern,local,1.0,0,,modern:George Romanes,New species come from geographic separation and increased sterility of crosses between incipient species.
+light,refined,1771,local,1.0,3,photons color wavelength,1771:144850368:2167,"Light is made of photons, which are particles of energy that carry information about color, wavelength, and other properties."
+light,refined,1784,local,1.0,0,,1784:190273290:1625,"Light is made of matter, specifically atoms and molecules."
+light,refined,1797,local,1.0,3,protons neutrons electrons,1797:191320009:281,"Light is made of atoms, primarily consisting of protons, neutrons, and electrons."
+light,refined,1801,local,1.0,1,quarks,1801:191253809:6,"Light is made of atoms, which are composed of quarks."
+light,refined,1810,local,1.0,4,protons neutrons electrons photons,1810:191679019:389,"Light is made of atoms, primarily consisting of protons, neutrons, electrons, and photons."
+light,refined,1817,local,1.0,0,,1817:192692638:521,Light is made of tiny particles of matter emitted from bodies by the acceleration of forces.
+light,refined,1823,local,1.0,1,photons,1823:192547783:505,Light is made of particles called photons.
+light,refined,1824,local,1.0,1,photons,1824:193109112:10,Light is made of particles called photons.
+light,refined,1842,local,1.0,1,quarks,1842:193322688:119,"Light is made of atoms, which are composed of quarks."
+light,refined,1860,local,1.0,0,,1860:193322699:731,Light is made of matter.
+light,refined,1911,local,1.0,1,photons,1911:Optics,"Light is made of photons, which are particles of energy that carry information about color, wavelength, and frequency."
+light,refined,modern,local,1.0,0,,modern:Optics,"Light is made of photons, which are packets of energy carrying information. Photons travel at the speed of light and have mass, making them a form of particle-like matter."
+atom,refined,1771,local,1.0,0,,1771:144133901:2389,"An atom is a particle of matter that is extremely small, indivisible, and fundamental to all physical phenomena."
+atom,refined,1784,local,1.0,4,tiny protons neutrons electrons,1784:144850378:115,"An atom is a fundamental unit of matter consisting of a tiny mass of matter called protons, neutrons, and electrons."
+atom,refined,1797,local,1.0,1,electrons,1797:191253817:1,An atom is a fundamental unit of matter consisting of a nucleus surrounded by electrons.
+atom,refined,1801,local,1.0,1,electrons,1801:191253809:224,An atom is a fundamental unit of matter consisting of a nucleus surrounded by electrons.
+atom,refined,1810,local,1.0,0,,1810:193108317:411,An atom is a fundamental unit of matter that exists independently of other substances and exhibits definite physical properties.
+atom,refined,1817,local,1.0,0,,1817:192200899:868,An atom is a particle of matter that is indivisible and conceived as the first principle or component part of all physical magnitude.
+atom,refined,1823,local,1.0,1,electrons,1823:193057497:872,An atom is a fundamental unit of matter consisting of a small mass surrounded by a cloud of negatively charged electrons.
+atom,refined,1824,local,1.0,1,electrons,1824:192547790:477,An atom is a fundamental unit of matter consisting of a nucleus surrounded by electrons.
+atom,refined,1842,local,1.0,2,proton neutron,1842:193322690:920,"An atom is a fundamental unit of matter that includes a single proton, neutron, and electron."
+atom,refined,1860,local,1.0,1,electrons,1860:193109113:1024,An atom is a fundamental unit of matter consisting of a nucleus surrounded by electrons.
+atom,refined,1911,local,1.0,0,,1911:Molecule,"An atom is the smallest unit of matter that possesses both mass and energy, capable of undergoing chemical reactions."
+atom,refined,modern,local,1.0,0,,modern:Chemistry,An atom is defined as anything that has rest mass and volume (it takes up space) and is made up of particles. It can attach to other atoms through chemical bonds to form chemical compounds like molecules or crystals.
+electricity,expanded,1771,local,1.0,1,treatments,1771:144133902:4738,"Electricity is the bursting of fire from a cloud or the earth, and it has various applications such as lighting, power generation, and communication. It is also used for medical treatments and is essential for electrical devices and systems."
+electricity,expanded,1784,local,1.0,1,electrons,1784:144850375:768,"Electricity is a mysterious force that produces alternating electric currents through the movement of electrons. It is used for various purposes such as lighting, powering electrical devices, and generating electricity for homes and businesses."
+electricity,expanded,1797,local,1.0,0,,1797:149979622:539,"Electricity is a form of energy that carries a negative charge. It has many practical applications, including powering electrical devices, lighting, and generating electricity for homes and businesses. Electricity is essential for modern life and transportation systems."
+electricity,expanded,1801,local,1.0,0,,1801:191253810:342,"Electricity is the flow of electric charge, while it's good for conducting electrical energy and generating power."
+electricity,expanded,1810,local,1.0,0,,1810:192692190:168,"Electricity is a form of energy that can cause objects to generate electric charges. It is useful for various applications such as lighting, heating, and powering electrical devices."
+electricity,expanded,1817,local,1.0,0,,1817:191678897:1296,"Electricity is the ability to transfer energy through a medium without direct contact. It is used for various purposes including lighting, heating, and power generation."
+electricity,expanded,1823,local,1.0,0,,1823:192015838:1396,"Electricity is a form of energy that can transfer electrical charge through conductors. It is used for powering devices like lamps, motors, and computers."
+electricity,expanded,1824,local,1.0,1,treatments,1824:192146221:275,"Electricity is the excess of vitreous electricity from copper, which it acquires from its contact with the copper. It is good for conducting electricity and can be used for various applications, including power generation, communication, and medical treatments."
+electricity,expanded,1842,local,1.0,0,,1842:193322688:1018,"Electricity is the ability to transfer energy through a medium, typically a liquid or gas, without direct contact. It's used for various applications including power generation, lighting, communication, and medical treatments."
+electricity,expanded,1860,local,1.0,0,,1860:193108325:906,"Electricity is the ability to transfer energy through conductors. It is used for various purposes including lighting, power generation, communication, and medical treatments."
+electricity,expanded,1911,local,1.0,3,protons televisions smartphones,1911:Electricity,"Electricity is a form of energy produced by the movement of charged particles, including electrons, protons, and atomic nuclei. It powers various devices like motors, televisions, computers, and smartphones. Electricity is essential for many aspects of daily life, including transportation, communication, and manufacturing."
+electricity,expanded,modern,local,1.0,0,,modern:Electricity,"Electricity is a form of energy that can flow through wires and is used for various purposes including powering appliances, lighting homes and businesses, and generating electricity for transportation systems."
+africa_interior,expanded,1771,local,0.5,0,,1771:144850366:3417,"The interior of Africa is barren and devoid of water, making it a desert region where cattles and animals often carry water and provisions."
+africa_interior,expanded,1784,local,1.0,0,,1784:144850377:384,"The interior of Africa lies between the Hither Libya on the north, the Atlantic Ocean on the west, the Ethiopic on the south, and Ethiopia on the east."
+africa_interior,expanded,1797,local,1.0,0,,1797:191253804:67,The interior of Africa lies between the Hither Libya on the north and the Farther Libya and Ethiopia beyond Egypt on the south.
+africa_interior,expanded,1801,local,1.0,0,,1801:191253807:47,"The interior of Africa is inhabited by both Moors and Negroes, with the latter being kind, hospitable, and credulous."
+africa_interior,expanded,1810,local,1.0,0,,1810:191253818:673,The interior of Africa lies between the Hither Libya and the Farther Libya and Ethiopia beyond Egypt.
+africa_interior,expanded,1817,local,1.0,0,,1817:192547785:1346,The interior of Africa lies between the Hither Libya and the Earthier Libya and Ethiopia beyond Egypt.
+africa_interior,expanded,1823,local,1.0,0,,1823:192984257:1438,The interior of Africa lies between the Hither Libya and the Farther Libya and Ethiopia beyond Egypt.
+africa_interior,expanded,1824,local,1.0,2,ptolemy's garamantes',1824:193108320:119,"The interior of Africa is limited, with war and commerce opening routes into this region. Alexandria becomes a great center of geographical knowledge, providing ample facilities for augmenting the stock of information. However, Ptolemy's descriptions show limitations due to unacknowledged knowledge about the Sahara and the Garamantes' territories."
+africa_interior,expanded,1842,local,1.0,0,,1842:193108323:527,The interior of Africa lies between the sixth and seventh degrees of north latitude and the eighth degree of west longitude.
+africa_interior,expanded,1860,local,1.0,0,,1860:193322699:326,The interior of Africa includes the regions that extend from Central the southern borders of the Sahara in the north to Cape Africa.
+africa_interior,expanded,1911,local,1.0,0,,1911:Sudan,"Sudan, a region stretching from Cape Verde on the Atlantic to Massawa on the Red Sea, bounded by the maritime countries of the west coast of Africa, the basin of the Congo, and the equatorial lakes."
+africa_interior,expanded,modern,local,1.0,0,,modern:Nubia,The source of the Blue Nile was established as a result of Portuguese interest in Ethiopia.
+dna,absent,1771,local,0.25,0,,1771:144133902:3380,Hereditary information between generations is carried by sperm cells.
+dna,absent,1784,local,0.5,0,,1784:144850370:1530,Hereditary information between generations.
+dna,absent,1797,local,0.5,0,,1797:149981670:571,Hereditary information is carried between generations through consanguinity and descent.
+dna,absent,1801,local,0.75,1,mathematician's,1801:191253809:22,"Hereditary information between generations is carried by the mathematician's daughter, who inherited her mathematical talent from her father."
+dna,absent,1810,local,0.5,1,concept,1810:192692193:16,"Hereditary information is carried between generations through the concept of ""generation."""
+dna,absent,1817,local,0.5,0,,1817:193109108:463,"Hereditary information between generations is carried by animals like cattle, sheep, and deer."
+dna,absent,1823,local,0.5,0,,1823:191679036:739,Hereditary information between generations is carried by the God of battles.
+dna,absent,1824,local,0.25,1,family's,1824:192016360:238,Hereditary information between generations is conveyed through the family's history and traditions.
+dna,absent,1842,local,0.75,0,,1842:193469091:962,The information about hereditary information between generations is carried by the astronomical records of the ancient Chaldeans.
+dna,absent,1860,local,0.75,0,,1860:193322700:864,The rule carried hereditary information between generations.
+dna,absent,1911,local,0.5,0,,1911:Heredity,Chromosomes carry hereditary information between generations.
+dna,absent,modern,local,0.75,0,,modern:Heredity,Genes
+radioactivity,absent,1771,abstain_retrieval,0.0,0,,,NO ANSWER IN THIS EDITION
+radioactivity,absent,1784,abstain_retrieval,0.0,0,,,NO ANSWER IN THIS EDITION
+radioactivity,absent,1797,abstain_retrieval,0.0,0,,,NO ANSWER IN THIS EDITION
+radioactivity,absent,1801,abstain_retrieval,0.0,0,,,NO ANSWER IN THIS EDITION
+radioactivity,absent,1810,abstain_retrieval,0.0,0,,,NO ANSWER IN THIS EDITION
+radioactivity,absent,1817,abstain_retrieval,0.0,0,,,NO ANSWER IN THIS EDITION
+radioactivity,absent,1823,abstain_retrieval,0.0,0,,,NO ANSWER IN THIS EDITION
+radioactivity,absent,1824,abstain_retrieval,0.0,0,,,NO ANSWER IN THIS EDITION
+radioactivity,absent,1842,abstain_retrieval,0.0,0,,,NO ANSWER IN THIS EDITION
+radioactivity,absent,1860,abstain_retrieval,0.0,0,,,NO ANSWER IN THIS EDITION
+radioactivity,absent,1911,local,1.0,0,,1911:Radioactivity,"Radioactivity is the phenomenon where unstable atomic nuclei break apart into smaller nuclei, releasing energy in the process."
+radioactivity,absent,modern,local,1.0,0,,modern:Radioactive decay,"Radioactivity is the emission of ionizing radiation by some heavy elements, especially radium."

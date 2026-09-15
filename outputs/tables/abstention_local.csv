@@ -1,0 +1,9 @@
+kind,era_group,pairs,abstained,share
+absent,pre_1911,20,10,0.5
+absent,1911_and_modern,4,0,0.0
+expanded,pre_1911,20,0,0.0
+expanded,1911_and_modern,4,0,0.0
+refined,pre_1911,20,0,0.0
+refined,1911_and_modern,4,0,0.0
+replaced,pre_1911,40,4,0.1
+replaced,1911_and_modern,8,0,0.0
