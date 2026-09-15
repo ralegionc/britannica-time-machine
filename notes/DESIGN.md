@@ -112,7 +112,7 @@ Two rules keep the weak routes from doing damage, both added after auditing:
   `BARRE, or Barri` is defensible alone, and following all of them merges five
   places into one subject.
 
-## Retrieval (s07)
+## Retrieval (s07, BM25 arm built)
 
 BM25 over the normalised text is the baseline and, for the early eras, probably
 the ceiling: embedding models have seen very little eighteenth-century orthography
@@ -122,9 +122,30 @@ alongside it and the two are fused with reciprocal rank fusion.
 The ablation is itself a result worth reporting, because it answers a question
 nobody has a number for: **how much retrieval quality does 250 years of
 typographic and lexical drift cost you?** The grid is raw OCR against normalised
-text, crossed with BM25, dense, and hybrid, scored per era against the gold
-entries in `eval/`. The expected shape is a curve that degrades smoothly
-backwards in time and a normalisation gain that grows the further back you go.
+text, crossed with BM25, dense, and hybrid, scored per era.
+
+The BM25 half is built and run, and is in the README. The expected shape was a
+curve degrading backwards in time and a normalisation gain growing with age. The
+first half held: recall@10 falls from 1.000 today to 0.480 at 1911 and about
+0.18 at 1771. The second half did not. The gain does not grow smoothly with age
+at all; it is worth +0.04 to +0.07 through 1817 and then exactly zero at 1823,
+1824, 1842 and 1860, because what it is really tracking is not age but the long
+s, which left English printing between the fifth edition and the sixth.
+
+Implemented against SQLite FTS5, so the index is a file and needs no dependency
+beyond the standard library, and era locking is structural: one table per era,
+with nowhere for a query to look outside its own.
+
+The gold labels are not hand-made, which the design above assumed they would be.
+They come from `s06`, which links on headwords and never reads body text, so
+they are independent of what the retrieval is being scored on. Queries are the
+openings of modern articles with the subject's own name stripped out, because
+left in, the measurement is of headword matching rather than of reading.
+
+The dense and hybrid arms are still unbuilt: encoding 2.4 million chunks on CPU
+is hours of work for an arm whose result is largely foreseeable, since embedding
+models have seen very little eighteenth-century orthography and none of this
+scanner's failure modes.
 
 ## Answering (s08)
 

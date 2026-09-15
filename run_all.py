@@ -31,6 +31,9 @@ STAGES = [
     ("s04b_fetch_modern_bulk.py", "modern layer in bulk, 50 titles per call",
      [], ["--limit", "400"]),
     ("s05_segment_entries.py", "cut volumes into entries, normalise the OCR", [], []),
+    ("s06_link_entries.py", "join each subject's entry across the twelve layers", [], []),
+    ("s07_build_indexes.py", "chunk, build one FTS5 index per era, run the ablation",
+     [], ["--queries-n", "60"]),
 ]
 
 

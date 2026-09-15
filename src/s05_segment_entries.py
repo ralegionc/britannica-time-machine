@@ -146,6 +146,11 @@ def main() -> int:
                     "volume_id": vid, "volume": m.get("volume"), "span": m.get("span"),
                     "entry_index": i, "headword": e["headword"],
                     "text": norm, "n_chars": len(norm),
+                    # Kept so that s07 can index the same entry twice and measure
+                    # what the normalisation is worth. This is the text as the
+                    # scanner read it, with only the line-break hyphens rejoined,
+                    # since entry boundaries cannot be found without that.
+                    "raw": e["raw"],
                 }, ensure_ascii=False) + "\n")
             oov_before = before_bad / max(before_tot, 1)
             oov_after = after_bad / max(after_tot, 1)

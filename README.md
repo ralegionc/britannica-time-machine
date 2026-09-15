@@ -19,8 +19,8 @@ boundaries in them at all.
 
 ## Status
 
-Corpus construction and entry linking are built and have been run: `s01` to
-`s06`. All three layers are complete on disk:
+Corpus construction, entry linking and the era-locked indexes are built and have
+been run: `s01` to `s07`. All three layers are complete on disk:
 
 | Layer | Contents |
 |---|---|
@@ -28,9 +28,11 @@ Corpus construction and entry linking are built and have been run: `s01` to
 | 1911 | 36,757 articles reconstructed from the Wikisource dump, 229 MB |
 | modern | 36,227 Wikipedia articles, 552 MB, 416 of them with no article |
 | linked | 67,219 subjects, 13 of which have an entry in all twelve eras |
+| indexed | 2,385,809 chunks in 22 era-locked FTS5 tables |
 
-Retrieval, answering, diffing and rendering are specified in
-[notes/DESIGN.md](notes/DESIGN.md) and not yet built.
+Answering, diffing and rendering are specified in
+[notes/DESIGN.md](notes/DESIGN.md) and not yet built, as is the dense arm of the
+retrieval ablation.
 
 Every number below was produced by the code in `src/`.
 
@@ -226,6 +228,55 @@ flyleaf marginalia live: striding across the volume instead, and weighting by
 token rather than averaging per-entry rates, moved the same measurement from
 24.0% to 13.2% before a line of the OCR code changed.
 
+## The curve this project was built to measure
+
+One FTS5 index per era, 2,385,809 chunks, and the same 300 queries run against
+every one of them. A query is the opening of a modern Wikipedia article **with
+the subject's own name removed**, so retrieval has to work from the description
+rather than from the headword; the gold answer is whichever entry `s06` linked to
+that subject in that era.
+
+| Era | Queries | recall@10 normalised | recall@10 raw | gain | MRR norm | MRR raw |
+|---|---|---|---|---|---|---|
+| modern | 300 | **1.000** | | | 1.000 | |
+| 1911 | 298 | 0.480 | | | 0.308 | |
+| 1860 | 196 | 0.321 | 0.321 | +0.000 | 0.180 | 0.176 |
+| 1842 | 233 | 0.223 | 0.223 | +0.000 | 0.115 | 0.112 |
+| 1824 | 22 | 0.318 | 0.318 | +0.000 | 0.177 | 0.172 |
+| 1823 | 288 | 0.233 | 0.233 | +0.000 | 0.105 | 0.105 |
+| 1817 | 283 | 0.198 | 0.134 | **+0.064** | 0.099 | 0.055 |
+| 1810 | 276 | 0.207 | 0.134 | **+0.073** | 0.096 | 0.054 |
+| 1801 | 10 | 0.400 | 0.300 | +0.100 | 0.258 | 0.250 |
+| 1797 | 288 | 0.163 | 0.104 | **+0.059** | 0.079 | 0.036 |
+| 1784 | 259 | 0.189 | 0.135 | **+0.054** | 0.084 | 0.045 |
+| 1771 | 225 | 0.182 | 0.142 | **+0.040** | 0.084 | 0.062 |
+
+Three things to read off it.
+
+**The control is exact.** The modern era scores 1.000 at rank one. The query is
+drawn from the modern article, so it had better, and the fact that it does is
+what licenses reading the rest of the column: the low early numbers are the task
+being hard, not the harness being broken.
+
+**Retrieval degrades smoothly backwards in time**, from 1.000 today to 0.480 in
+1911, 0.321 in 1860, and about 0.18 in 1771. Asking an eighteenth-century
+encyclopaedia a modern question in modern words is roughly five times harder than
+asking 1911 and twenty times harder than asking Wikipedia, on the same index,
+the same metric and the same 300 questions.
+
+**The normalisation gain stops dead in 1823.** It is worth +0.04 to +0.07
+recall@10 through 1817, and it nearly doubles MRR at 1797 (0.036 to 0.079) and
+1810 (0.054 to 0.096). Then at 1823, 1824, 1842 and 1860 it is **+0.000, four
+times in a row.** That is the long s leaving English printing, measured a second
+time by a completely different instrument: `s05` found the same boundary in the
+out-of-vocabulary rate, which falls from 14% to 2% between the fifth edition and
+the sixth. Two independent measurements, one typographic transition, the same
+five years.
+
+What the numbers do not support is any claim about dense retrieval, which is not
+built. And the supplements (1801, 1824) have ten and twenty-two queries; they are
+in the table for completeness and should not be read as trends.
+
 ## Linking one subject across twelve layers
 
 67,219 subjects out of 210,007 (era, headword) nodes. Five routes, each recorded
@@ -374,7 +425,8 @@ python run_all.py              # the whole 1911 edition from the dump, about 15 
 | `s04_fetch_modern.py` | the same layer one article at a time; kept as the comparison case |
 | `s05_segment_entries.py` | cuts volumes into entries, normalises the OCR, reports what it rejected |
 | `s06_link_entries.py` | joins the entry for one subject across all twelve layers |
-| `s07` to `s10` | indexing, era-locked answering, diffing, rendering. See [notes/DESIGN.md](notes/DESIGN.md) |
+| `s07_build_indexes.py` | chunks the corpus, builds one FTS5 index per era, runs the ablation |
+| `s08` to `s10` | era-locked answering, diffing, rendering. See [notes/DESIGN.md](notes/DESIGN.md) |
 
 Every stage resumes. `s03` and `s04` are the slow ones and both take `--limit`.
 
