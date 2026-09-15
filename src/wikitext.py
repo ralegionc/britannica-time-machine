@@ -271,6 +271,30 @@ def to_plain_text(wt: str) -> str:
     return _BLANKS.sub("\n\n", wt).strip()
 
 
+_HEADER_COMMENT = re.compile(r"<!--.*?-->", re.DOTALL)
+_BAD_PARAM = re.compile(r"[{}<>\[\]|]")
+
+
+def header_param(article_wikitext: str, name: str) -> str | None:
+    """Read one parameter out of the `{{EB1911}}` header, or None.
+
+    Guarded, because the obvious regex is wrong in a way that stays invisible
+    until something downstream groups by the value. Forty-five articles carry
+    `|wikipedia = {{import enwiki|...}}` and six carry the tail of an HTML
+    comment; a reader that takes everything up to the next newline turns all
+    fifty-one into one modern title, and the linker then merges forty-six
+    unrelated biographies into a single subject.
+    """
+    text = _HEADER_COMMENT.sub("", article_wikitext or "")
+    m = re.search(r"\|\s*" + re.escape(name) + r"\s*=\s*([^\n|}]*)", text)
+    if not m:
+        return None
+    value = m.group(1).strip().strip("'\"")
+    if not value or _BAD_PARAM.search(value) or value.startswith(("-", "=")):
+        return None
+    return value
+
+
 _PAGES_TAG = re.compile(r"<pages\b([^>]*?)/?>", re.IGNORECASE | re.DOTALL)
 _ATTR = re.compile(r"""(\w+)\s*=\s*(?:"([^"]*)"|'([^']*)'|(\S+))""")
 _INDEX_VOLUME = re.compile(r"EB1911\s*-\s*Volume\s*(\d+)\.djvu", re.IGNORECASE)

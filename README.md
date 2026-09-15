@@ -19,12 +19,18 @@ boundaries in them at all.
 
 ## Status
 
-Corpus construction is built and has been run: `s01` to `s05`. Two of the three
-layers are complete on disk, being the 193 NLS volumes (198,323 entries across
-ten eras) and the whole 1911 edition (36,787 articles). The modern layer is not:
-it needs the same dump treatment the 1911 layer got, since 35,073 articles
-through the API will not clear the quota. Retrieval, answering, diffing and
-rendering are specified in [notes/DESIGN.md](notes/DESIGN.md) and not yet built.
+Corpus construction and entry linking are built and have been run: `s01` to
+`s06`. All three layers are complete on disk:
+
+| Layer | Contents |
+|---|---|
+| 1771 to 1860 | 193 NLS volumes, 198,323 entries across ten eras |
+| 1911 | 36,757 articles reconstructed from the Wikisource dump, 229 MB |
+| modern | 36,227 Wikipedia articles, 552 MB, 416 of them with no article |
+| linked | 67,219 subjects, 13 of which have an entry in all twelve eras |
+
+Retrieval, answering, diffing and rendering are specified in
+[notes/DESIGN.md](notes/DESIGN.md) and not yet built.
 
 Every number below was produced by the code in `src/`.
 
@@ -220,6 +226,77 @@ flyleaf marginalia live: striding across the volume instead, and weighting by
 token rather than averaging per-entry rates, moved the same measurement from
 24.0% to 13.2% before a line of the OCR code changed.
 
+## Linking one subject across twelve layers
+
+67,219 subjects out of 210,007 (era, headword) nodes. Five routes, each recorded
+on the link it made, so a weak one can be audited or dropped:
+
+| Route | Links | What it is |
+|---|---|---|
+| `exact` | 118,528 | the same normalised headword in two layers |
+| `wikipedia` | 21,323 | the `wikipedia=` parameter in the 1911 header |
+| `fuzzy` | 1,920 | one edit, gated on the lexicon |
+| `variant` | 996 | the encyclopaedia declaring its own synonym |
+| `alias` | 21 | declared in `eval/aliases.yaml` |
+
+and three counters for what was refused: 1,457 variant declarations vetoed by
+the edition that made them, 413 fuzzy candidates rejected as ambiguous, 27
+merges declined for growing a component too far.
+
+Subjects reaching back through the eras thin out exactly as you would expect:
+28,263 appear in two, 1,264 in ten, 156 in eleven, and 13 in all twelve.
+
+### Four things the audit changed
+
+**The corpus declares its own synonyms.** Entries open `ABAPTISTON, or
+Anabaptiston, an obsolete term...`, and 11,095 of those declarations are sitting
+in the text already, written by people who knew the subject. The pure cross
+reference this project expected to mine instead, `ABBAT. See Abbot.`, barely
+exists: 13 against 4,767 in the same four editions, and most of the 13 point at
+a treatise rather than a synonym.
+
+**One edit is not a small distance in English.** Ungated, the fuzzy route was
+about half wrong. ANEMIA and ANOMIA are one apart and are a disease and a
+brachiopod; so are BARON and BACON, PARRY and PARTY, BOLAS and BOLUS. The fix is
+not a tighter distance but a different question, asked of the 1911 lexicon: are
+*both* spellings words? If so it is two subjects. If only one is, the other is
+the scanner or the century talking, and PLNDUS to PINDUS, JUNIPERQS to
+JUNIPERUS, MOOR HEN to MOORHEN all come through.
+
+**Union-find is transitive and this evidence is not.** CHAFERY, CHAFFER, CHAMFER
+and CHAFF landed in one component with BEETLE and COLEOPTERA, joined end to end
+by links that each looked reasonable alone. Two rules bound it: the declaring
+edition gets a veto (`BARR, or Barre` is dropped when that edition also gives
+BARRE its own entry), and weak routes may not grow a component past a cap.
+
+**A route worth deleting.** Filing 1911 biographies under their surname, so that
+`Abbot, George` could meet an earlier `ABBOT`, merged every Jones with every
+other Jones and `Hake, Thomas Gordon` with the fish. It is off by default.
+
+Linking also exposed a bug upstream. Forty-six unrelated biographies had become
+one subject because 45 articles carry `|wikipedia = {{import enwiki|...}}` and
+the header reader took it literally. `wikitext.header_param` now refuses values
+containing template or comment syntax, and the 1911 layer was rebuilt.
+
+### What the seed questions can actually be asked of
+
+`outputs/tables/question_coverage.csv`, in full:
+
+| Question | Kind | Eras with an entry |
+|---|---|---|
+| continents, species, light, atom, electricity, africa_interior | replaced, refined, expanded | all 12 |
+| heat | replaced | 11 (no 1824 supplement entry) |
+| dna | absent | 10, under GENERATION and HEREDITY |
+| cholera | replaced | 4: 1842, 1860, 1911, modern |
+| radioactivity | absent | 2: 1911, modern |
+
+The last two are the interesting rows. Radioactivity behaves exactly as the
+question set predicted, appearing in 1911 and never before. Cholera does not:
+the early editions have no cholera entry at all, so the 1771 answer to "what
+causes cholera" is not a wrong theory under a different headword, it is silence.
+That is a finding about what an encyclopaedia of 1771 was for, and it is also
+precisely the abstention case `s08` has to get right.
+
 ## When seeking into a dump pays, and when it does not
 
 Both bulk stages had the same choice to make and they did not make it the same
@@ -296,7 +373,8 @@ python run_all.py              # the whole 1911 edition from the dump, about 15 
 | `s04b_fetch_modern_bulk.py` | modern layer in bulk, 50 titles per call, or from the Wikipedia dump |
 | `s04_fetch_modern.py` | the same layer one article at a time; kept as the comparison case |
 | `s05_segment_entries.py` | cuts volumes into entries, normalises the OCR, reports what it rejected |
-| `s06` to `s10` | linking, indexing, era-locked answering, diffing, rendering. See [notes/DESIGN.md](notes/DESIGN.md) |
+| `s06_link_entries.py` | joins the entry for one subject across all twelve layers |
+| `s07` to `s10` | indexing, era-locked answering, diffing, rendering. See [notes/DESIGN.md](notes/DESIGN.md) |
 
 Every stage resumes. `s03` and `s04` are the slow ones and both take `--limit`.
 

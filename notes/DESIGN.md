@@ -74,7 +74,7 @@ roughly 6,000 characters are split on paragraph boundaries into overlapping
 windows, keeping the headword as a prefix on every window so that a retrieved
 fragment still says what it is an entry about.
 
-## Entry linking (s06)
+## Entry linking (s06, built)
 
 The spine of the timeline is a table of entry ids that refer to the same subject
 across eras. Three routes, recorded per link so that the weak ones can be audited
@@ -83,13 +83,34 @@ separately:
 1. **1911 to modern**: the `wikipedia=` parameter in the EB1911 header, curated
    by Wikisource editors. Handles renamings that string matching cannot
    (*Gravitation* to *Gravity*).
-2. **Between NLS editions**: normalised headword equality, then bounded edit
-   distance with a same-first-letter constraint, which catches the spelling
-   drift that is everywhere in this corpus (*CHYMISTRY* to *CHEMISTRY*).
+2. **Between NLS editions**: normalised headword equality, then edit distance one
+   gated on the 1911 lexicon. The gate is the whole rule: one edit is not a
+   large distance in English, so the test is not how far apart two spellings are
+   but whether both are words. BARON and BACON are one apart and both real;
+   VOLHINIA and VOLHYNIA are one apart and only one is.
 3. **Declared aliases**: `eval/aliases.yaml`, for subjects that changed name
    outright (*NIGRITIA* to *WEST AFRICA*, *CONSUMPTION* to *TUBERCULOSIS*). This
    file is evidence, not configuration: it is the list of renamings the project
    found, and it belongs in the write-up.
+
+Building it added a fourth route the sketch above missed, and it turned out to
+be the best one available: **the encyclopaedia declares its own synonyms**.
+Entries open `ABAPTISTON, or Anabaptiston, an obsolete term...`, and 11,095 of
+those declarations sit in the corpus already, written by people who knew the
+subject. What the sketch expected instead, the pure cross reference
+`ABBAT. See Abbot.`, barely exists: 13 of them against 4,767 variant
+declarations across the same four editions, and most of the 13 point at a
+treatise rather than a synonym.
+
+Two rules keep the weak routes from doing damage, both added after auditing:
+
+- **The declaring edition gets a veto.** If an edition says `BARR, or Barre`
+  but also gives BARRE its own entry, that edition is treating them as two
+  subjects and the link is dropped. 1,457 declarations are refuted this way.
+- **Components cannot grow without limit through weak links.** Union-find is
+  transitive and this evidence is not: each of `BAR, or Barr`, `BARR, or Barre`,
+  `BARRE, or Barri` is defensible alone, and following all of them merges five
+  places into one subject.
 
 ## Retrieval (s07)
 

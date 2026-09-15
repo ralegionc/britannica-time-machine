@@ -51,9 +51,10 @@ EDITION_YEAR = {
     "supplement-3": 1801,
     "supplement-4-6": 1824,
 }
-# Eras carried through the whole pipeline. The middle editions are indexed but
-# the default question runs use these five plus the two modern layers.
-ERAS = ["1771", "1797", "1823", "1842", "1860", "1911", "modern"]
+# Every era on the axis, in order. Ten editions and supplements from the NLS
+# scans, the 1911 edition from Wikisource, and Wikipedia as it stands today.
+ERAS = ["1771", "1784", "1797", "1801", "1810", "1817", "1823", "1824",
+        "1842", "1860", "1911", "modern"]
 
 ORDINALS = {
     "first": 1, "second": 2, "third": 3, "fourth": 4,

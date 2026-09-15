@@ -28,6 +28,7 @@ from collections import Counter
 from concurrent.futures import ThreadPoolExecutor
 
 import ocr
+from wikitext import header_param as ocr_header
 from common import (EB1911_DB, EB1911_PREFIX, INTERIM, RateLimiter,
                     WIKISOURCE_API, api_get, eb1911_connect, get_logger, session)
 
@@ -91,13 +92,11 @@ def fetch_one(sess, lim: RateLimiter, title: str) -> dict | None:
     parse = js.get("parse", {})
     wt = parse.get("wikitext", "")
     text = clean_html(parse.get("text", ""))
-    vol = re.search(r"volume\s*=\s*([^\n|}]*)", wt)
-    wp = re.search(r"wikipedia\s*=\s*([^\n|}]*)", wt)
     return {
         "title": title,
         "headword": title.split("/", 1)[-1],
-        "volume": (vol.group(1).strip() if vol else None) or None,
-        "wikipedia": (wp.group(1).strip() if wp else None) or None,
+        "volume": ocr_header(wt, "volume"),
+        "wikipedia": ocr_header(wt, "wikipedia"),
         "text": text, "chars": len(text), "fetched": time.time(),
     }
 

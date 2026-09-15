@@ -216,9 +216,8 @@ def resolve(con: sqlite3.Connection) -> None:
         if not text:
             stats["empty"] += 1
             continue
-        m_wp = re.search(r"wikipedia\s*=\s*([^\n|}]*)", stub)
         rows.append((title, title.split("/", 1)[-1], str(spec["volume"]),
-                     (m_wp.group(1).strip() if m_wp else None) or None,
+                     wt.header_param(stub, "wikipedia"),
                      text, len(text), time.time(), "dump"))
         stats["resolved"] += 1
         if len(rows) >= 2000:
