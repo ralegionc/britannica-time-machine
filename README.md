@@ -40,6 +40,8 @@ Every number below was produced by the code in `src/`.
 
 ## The data, verified before anything was built
 
+> The raw inputs are not in this repository. [DATA.md](DATA.md) records exactly which files were used, with sizes and fingerprints, and how to re-fetch them.
+
 | Source | What it gives | Verified |
 |---|---|---|
 | [NLS Data Foundry](https://data.nls.uk/data/digitised-collections/encyclopaedia-britannica/) | editions 1 to 8, 1771 to 1860, 195 volumes as OCR plain text | 353 MB zip, live, serves byte ranges |
